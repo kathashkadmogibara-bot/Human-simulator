@@ -1,0 +1,242 @@
+/* ================================
+   MOGIBARA HUMAN SIMULATION
+   Professional Coder UI
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Courier New", Consolas, monospace;
+  background:
+    radial-gradient(circle at top, #182238 0%, #080b12 45%, #05070b 100%);
+  color: #e6edf3;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Subtle grid background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 170, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 170, 0.035) 1px, transparent 1px);
+  background-size: 35px 35px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+header {
+  width: 100%;
+  padding: 28px 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 255, 170, 0.2);
+  background: rgba(5, 9, 15, 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.35);
+}
+
+header h1 {
+  color: #00ffae;
+  font-size: clamp(22px, 5vw, 38px);
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 8px rgba(0, 255, 174, 0.7),
+    0 0 25px rgba(0, 255, 174, 0.3);
+}
+
+/* Terminal-style prefix */
+header h1::before {
+  content: "> ";
+  color: #7dffcf;
+}
+
+/* ================================
+   MAIN
+================================ */
+
+main {
+  flex: 1;
+  width: min(700px, 90%);
+  margin: 70px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.button {
+  position: relative;
+  display: block;
+  width: min(550px, 100%);
+  padding: 20px 25px;
+  margin: 12px 0;
+
+  color: #00ffae;
+  background: rgba(10, 18, 27, 0.85);
+
+  border: 1px solid rgba(0, 255, 174, 0.45);
+  border-radius: 10px;
+
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  box-shadow:
+    0 0 0 transparent,
+    inset 0 0 20px rgba(0, 255, 174, 0.025);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+
+  overflow: hidden;
+}
+
+/* Small terminal symbol */
+.button::before {
+  content: "./";
+  color: #657384;
+  margin-right: 8px;
+}
+
+/* Shine effect */
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.button:hover::after {
+  left: 140%;
+}
+
+.button:hover {
+  color: #ffffff;
+  background: rgba(0, 255, 174, 0.08);
+  border-color: #00ffae;
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 8px 30px rgba(0, 255, 174, 0.15),
+    0 0 15px rgba(0, 255, 174, 0.15);
+}
+
+.button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+  width: 100%;
+  padding: 30px 20px;
+  text-align: center;
+
+  background: rgba(4, 7, 12, 0.9);
+  border-top: 1px solid rgba(0, 255, 174, 0.15);
+
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.25);
+}
+
+footer h3 {
+  color: #ffcc66;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+footer pre {
+  max-width: 800px;
+  margin: auto;
+
+  white-space: pre-wrap;
+  font-family: "Courier New", Consolas, monospace;
+
+  color: #8996a6;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  header {
+    padding: 22px 15px;
+  }
+
+  header h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  main {
+    width: 90%;
+    margin: 50px auto;
+  }
+
+  .button {
+    padding: 17px 15px;
+    font-size: 13px;
+  }
+
+  footer {
+    padding: 25px 15px;
+  }
+
+  footer pre {
+    font-size: 10px;
+  }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+                   }
